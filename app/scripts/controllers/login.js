@@ -34,10 +34,10 @@ angular.module('webApp')
             console.log(data);
 
             $http({
-              url: "https://api.echelonapp.io:8081/spotify-auth/",
-              method: "POST",
+              url: 'https://api.echelonapp.io:8081/spotify-auth/',
+              method: 'POST',
               data: {
-                'uid': data['id']+"_spotify",
+                'uid': data.id + '_spotify',
                 'access_token': spotToke
               },
               headers: {
