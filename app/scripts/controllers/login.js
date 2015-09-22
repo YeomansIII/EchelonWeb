@@ -59,7 +59,7 @@ angular.module('webApp')
             //   });
           });
         }
-      }, 2000);
+      }, 1500);
     }
 
     $scope.spotifyLogin = function() {

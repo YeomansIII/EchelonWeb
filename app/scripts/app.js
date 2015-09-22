@@ -22,7 +22,8 @@ angular.module('webApp', [
   'spotify'
 ]).config(function(SpotifyProvider) {
   SpotifyProvider.setClientId('8b81e3deddce42c4b0f2972e181b8a3a');
-  SpotifyProvider.setRedirectUri('http://localhost:9000/spotify-callback.html');
+  //SpotifyProvider.setRedirectUri('http://localhost:9000/spotify-callback.html');
+  SpotifyProvider.setRedirectUri('https://echelonapp.io/spotify-callback.html');
   SpotifyProvider.setScope('user-read-private user-read-email');
 }).config(['$httpProvider', function($httpProvider) {
   $httpProvider.defaults.useXDomain = true;
