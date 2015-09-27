@@ -26,7 +26,7 @@ angular.module('webApp')
       setTimeout(function() {
         //console.log(localStorage.getItem('spotify-token'));
         var spotToke = localStorage.getItem('spotify-token');
-        if (spotToke === null) {
+        if (spotToke === 'null') {
           waitSpotify();
         } else {
           console.log(spotToke);
