@@ -1,10 +1,9 @@
-
-<h2>Login Page</h2>
-
-<fieldset>
-  <legend>Oauth</legend>
-  <p>
-    <button  class="btn btn-lg btn-success" ng-click="spotifyLogin()">Spotify</button>
-    <button  class="btn btn-primary" ng-click="anonymousLogin()">Anonymous</button>
-  </p>
-</fieldset>
+<div class="login-page center-both-flex">
+  <img src="../images/login_bg_top.png" class="login-bg-top"></img>
+  <img src="../images/login_bg_bottom.png" class="login-bg-bottom"></img>
+  <div class="login-content-box">
+    <h3>Login to Echelon</h3>
+    <button class="btn btn-lg btn-echelon btn-echelon-prim" ng-click="spotifyLogin()">Login with Spotify</button>
+    <button class="btn btn-echelon btn-echelon-trans" ng-click="anonymousLogin()">Skip Login (Limited)</button>
+  </div>
+</div>

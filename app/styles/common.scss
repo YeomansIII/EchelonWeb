@@ -1,0 +1,37 @@
+.center-both-flex {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+.btn-echelon {
+  border-radius: 1px;
+}
+.btn-echelon-prim {
+  background-color: #57387b;
+  color: white;
+  transition: background-color 0.5s ease;
+  &:hover {
+    color: white;
+    background-color: #342149;
+  }
+}
+.btn-echelon-trans {
+  background-color: transparent;
+  color: #57387b;
+  transition: background-color 0.5s ease;
+  &:hover {
+    color: #57387b;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
