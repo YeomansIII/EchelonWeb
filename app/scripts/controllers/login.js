@@ -38,12 +38,13 @@ angular.module('webApp')
           console.log(spotToke);
           Spotify.getCurrentUser().then(function(data) {
             console.log(data);
+            var uid = data.id + '_spotify';
 
             $http({
               url: 'https://api.echelonapp.io:8081/spotify-auth/',
               method: 'POST',
               data: {
-                'uid': data.id + '_spotify',
+                'uid': uid,
                 'access_token': spotToke
               },
               headers: {
@@ -51,7 +52,7 @@ angular.module('webApp')
               }
             }).success(function(response) {
               console.log(response);
-              Auth.$authWithCustomToken(response).then(redirect, showError);
+              Auth.$authWithCustomToken(response).then(redirect(data), showError);
             });
 
             // $http.post("https://api.echelonapp.io:8081/spotify-auth/", {
@@ -86,8 +87,32 @@ angular.module('webApp')
 
 
 
-    function redirect() {
-      $location.path('/account');
+    function redirect(data) {
+      var uid = data.id + '_spotify';
+      var ref = new Firebase('https://flickering-heat-6442.firebaseio.com/users/' + uid);
+      ref.once('value', function(snapshot) {
+        if (snapshot !== null) {
+          console.log('Got snapshot');
+          var userObj = {
+            country: data.country,
+            display_name: data.display_name,
+            email: data.email,
+            ext_url: data.external_urls.spotify,
+            id: data.id,
+            product: data.product,
+            type: data.type,
+            uri: data.uri
+          };
+          var images = data.images;
+          if (images.length > 0) {
+            userObj.image_url = images[0].url;
+          }
+          ref.set(userObj);
+        }
+        $location.path('/account');
+      }, function(errorObject) {
+        console.log('User read failed: ' + errorObject.code);
+      });
     }
 
     function showError(err) {

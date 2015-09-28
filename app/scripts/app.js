@@ -21,12 +21,12 @@ angular.module('webApp', [
   'firebase.auth',
   'spotify'
 ]).config(function(SpotifyProvider) {
-  SpotifyProvider.setClientId('8b81e3deddce42c4b0f2972e181b8a3a');
+  SpotifyProvider.setClientId(atob('OGI4MWUzZGVkZGNlNDJjNGIwZjI5NzJlMTgxYjhhM2E='));
   var origin = document.location.origin;
-  if (origin.indexOf('localhost') > -1) {
-    SpotifyProvider.setRedirectUri(document.location.origin + '/spotify-callback.html');
+  if (origin.indexOf(atob('bG9jYWxob3N0')) > -1) {
+    SpotifyProvider.setRedirectUri(document.location.origin + atob('L3Nwb3RpZnktY2FsbGJhY2suaHRtbA=='));
   } else {
-    SpotifyProvider.setRedirectUri('https://echelonapp.io/spotify-callback.html');
+    SpotifyProvider.setRedirectUri(atob('aHR0cHM6Ly9lY2hlbG9uYXBwLmlvL3Nwb3RpZnktY2FsbGJhY2suaHRtbA=='));
   }
   SpotifyProvider.setScope('user-read-private user-read-email');
 }).config(['$httpProvider', function($httpProvider) {
