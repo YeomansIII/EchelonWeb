@@ -7,7 +7,7 @@
  * Manages authentication to any active providers.
  */
 angular.module('webApp')
-  .controller('LoginCtrl', function($scope, $http, Auth, $location, Spotify, $) {
+  .controller('LoginCtrl', function($scope, $http, Auth, $location, Spotify) {
     var $loginPage = $('.login-page');
     $(window).resize(function() {
       $loginPage.height($(window).height());
