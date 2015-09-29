@@ -33,3 +33,16 @@ angular.module('webApp', [
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }]);
+
+
+$('.navbar-nav li').click(function() {
+  var $this = $(this);
+  if (!$this.hasClass('active')) {
+    $('.navbar-nav li').removeClass('active');
+    $this.addClass('active');
+    var $navToggle = $('.navbar-toggle');
+    if ($navToggle.css('display') !== 'none') {
+      $navToggle.click();
+    }
+  }
+});
