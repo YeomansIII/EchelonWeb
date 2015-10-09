@@ -1,14 +1,14 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
+@import "../bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 
+// endbower
 //imports
 @import "common.scss";
 @import "login.scss";
-//endimports
 
+//endimports
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -47,11 +47,11 @@ body {
     padding-bottom: 19px;
   }
 }
+
 // .container {
 //   padding: 0;
 //   margin: 0;
 // }
-
 /* Custom page footer */
 .footer {
   padding-top: 19px;
@@ -79,7 +79,6 @@ body {
     margin-top: 28px;
   }
 }
-
 @media screen and (max-width: 767px) {
   .container-main {
     margin: 0;
