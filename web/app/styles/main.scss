@@ -6,6 +6,7 @@ $icon-font-path: "../../bower_components/bootstrap-sass-official/assets/fonts/bo
 // endbower
 //imports
 @import "common.scss";
+@import "mainpage.scss";
 @import "login.scss";
 
 //endimports
@@ -25,9 +26,43 @@ body {
   width: 100%;
   margin: 0;
 }
+.navbar {
+  background-color: #94bac7;
+  border-radius: 0;
+  border: none;
+  margin-bottom: 0;
+  color: white;
+}
+.navbar-default {
+  .navbar-brand {
+    color: white;
+  }
+  .navbar-nav {
+    li {
+      a {
+        color: white;
+      }
+    }
+    .active {
+      a {
+        color: #333;
+        background-color: inherit;
+        &:hover {
+          background-color: inherit;
+        }
+        &:focus {
+          background-color: inherit;
+        }
+      }
+    }
+  }
+}
+.navbar-toggle {
+  border: none;
+  background-color: #e3e1f6;
+}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
 .marketing,
 .footer {
   padding-left: 15px;
@@ -36,9 +71,6 @@ body {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
   /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
@@ -100,9 +132,6 @@ body {
     padding-right: 0;
   }
   /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;

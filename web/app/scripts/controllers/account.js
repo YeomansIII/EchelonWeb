@@ -7,11 +7,13 @@
  * Provides rudimentary account management functions.
  */
 angular.module('webApp')
-  .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject) {
+  .controller('AccountCtrl', function($scope, user, Auth, Ref, $firebaseObject) {
     $scope.user = user;
-    $scope.logout = function() { Auth.$unauth(); };
+    $scope.logout = function() {
+      Auth.$unauth();
+    };
     $scope.messages = [];
-    var profile = $firebaseObject(Ref.child('users/'+user.uid));
+    var profile = $firebaseObject(Ref.child('users/' + user.uid));
     profile.$bindTo($scope, 'profile');
 
 

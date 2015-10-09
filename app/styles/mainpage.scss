@@ -1,0 +1,31 @@
+.main-page {
+  position: relative;
+  overflow: hidden;
+}
+.main-page-home {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+.main-page-join {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  i {
+    font-size: 4em;
+    color: #999;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  input {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
