@@ -1,0 +1,15 @@
+.group-page {
+  position: relative;
+  overflow: hidden;
+}
+.group-page-home {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  .nav-tabs {
+    li {
+      width: 50%;
+      text-align: center;
+    }
+  }
+}

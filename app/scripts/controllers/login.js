@@ -109,7 +109,9 @@ angular.module('webApp')
           }
           ref.set(userObj);
         }
-        $location.path('/main');
+        $scope.$apply(function() {
+          $location.path('/main');
+        });
       }, function(errorObject) {
         console.log('User read failed: ' + errorObject.code);
       });

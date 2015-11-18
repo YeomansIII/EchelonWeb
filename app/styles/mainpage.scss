@@ -18,14 +18,25 @@
     right: 0;
     top: 0;
   }
-  input {
-    width: 100%;
+  form {
+    width: inherit;
     max-width: 300px;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    input {
+      width: 100%;
+      max-width: 300px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    button {
+      width: 100%;
+      max-width: 300px;
+    }
   }
-  button {
-    width: 100%;
-    max-width: 300px;
+}
+.no-group-error {
+  border-color: #F00;
+  border-width: 3px;
+  &:focus {
+    border-color: #C00;
   }
 }

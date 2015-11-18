@@ -61,7 +61,10 @@ angular.module('webApp')
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-
+      .when('/group', {
+        templateUrl: 'views/group.html',
+        controller: 'GroupCtrl'
+      })
       .when('/chat', {
         templateUrl: 'views/chat.html',
         controller: 'ChatCtrl'
