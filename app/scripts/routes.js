@@ -61,11 +61,11 @@ angular.module('webApp')
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/group', {
+      .whenAuthenticated('/group', {
         templateUrl: 'views/group.html',
         controller: 'GroupCtrl'
       })
-      .when('/chat', {
+      .whenAuthenticated('/chat', {
         templateUrl: 'views/chat.html',
         controller: 'ChatCtrl'
       })

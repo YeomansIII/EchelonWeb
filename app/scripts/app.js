@@ -32,8 +32,22 @@ angular.module('webApp', [
 }).config(['$httpProvider', function($httpProvider) {
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
-}]);
+}]).factory('Page', function() {
+  var title = '';
+  return {
+    title: function() {
+      return title;
+    },
+    setTitle: function(newTitle) {
+      title = newTitle;
+    }
+  };
+});
 
+angular.module('webApp')
+  .controller('HtmlCtrl', function($scope, Page) {
+    $scope.Page = Page;
+  });
 
 $('.navbar-nav li').click(function() {
   var $this = $(this);

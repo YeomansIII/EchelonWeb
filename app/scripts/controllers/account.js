@@ -7,7 +7,8 @@
  * Provides rudimentary account management functions.
  */
 angular.module('webApp')
-  .controller('AccountCtrl', function($scope, user, Auth, Ref, $firebaseObject) {
+  .controller('AccountCtrl', function($scope, user, Page, Auth, Ref, $firebaseObject) {
+    Page.setTitle('- Account');
     $scope.user = user;
     $scope.logout = function() {
       Auth.$unauth();
