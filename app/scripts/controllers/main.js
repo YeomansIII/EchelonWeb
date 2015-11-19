@@ -10,6 +10,16 @@
 angular.module('webApp')
   .controller('MainCtrl', function($scope, $location, Auth, Firebase, Page) {
     Page.setTitle('');
+
+    $.urlParam = function(name) {
+      var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+      if (results === null) {
+        return null;
+      } else {
+        return results[1] || 0;
+      }
+    };
+
     var ref = new Firebase('https://flickering-heat-6442.firebaseio.com/');
     var $mainPage = $('.main-page');
     $(window).resize(function() {
@@ -33,13 +43,13 @@ angular.module('webApp')
         if (dataSnapshot.val() !== null) {
           userRef.once('value', function(dataSnapshot2) {
             var particMe = {
-                'active':true,
-                'displayName':dataSnapshot2.child('display_name').val(),
-                'extUrl':dataSnapshot2.child('ext_url').val(),
-                'imageUrl':dataSnapshot2.child('image_url').val()
+              'active': true,
+              'displayName': dataSnapshot2.child('display_name').val(),
+              'extUrl': dataSnapshot2.child('ext_url').val(),
+              'imageUrl': dataSnapshot2.child('image_url').val()
             };
             console.log(particMe);
-            groupRef.child('participants/'+ref.getAuth().uid).set(particMe);
+            groupRef.child('participants/' + ref.getAuth().uid).set(particMe);
             userRef.child('cur_group').set(dataSnapshot.child('name').val());
             $scope.$apply(function() {
               $location.path('/group');
@@ -60,9 +70,7 @@ angular.module('webApp')
       Auth.$unauth();
     };
 
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    if($.urlParam('action') === 'join') {
+      $scope.joinGroup();
+    }
   });
