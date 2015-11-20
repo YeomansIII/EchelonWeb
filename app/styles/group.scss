@@ -13,3 +13,17 @@
     }
   }
 }
+.group-action-bar {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  background-color: #412F49;
+  color: #FFF;
+  h3 {
+    margin: 0;
+    padding: 0;
+  }
+}
