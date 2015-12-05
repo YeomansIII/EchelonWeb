@@ -1,3 +1,4 @@
+@import 'variables';
 .group-page {
   position: relative;
   overflow: hidden;
@@ -8,22 +9,21 @@
   flex-direction: column;
   .nav-tabs {
     li {
-      width: 50%;
       text-align: center;
+      width: 50%;
     }
   }
 }
 .group-action-bar {
-  position: absolute;
-  bottom: 0;
-  display: flex;
   align-items: center;
+  background-color: $otherside;
+  bottom: 0;
+  color: $white;
+  display: flex;
   height: 50px;
+  position: absolute;
   width: 100%;
-  background-color: #412F49;
-  color: #FFF;
-  h3 {
-    margin: 0;
-    padding: 0;
+  .group-name {
+    margin: 0 0.7em;
   }
 }

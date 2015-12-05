@@ -1,19 +1,21 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$icon-font-path: '../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/';
 
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 //imports
-@import "common.scss";
-@import "mainpage.scss";
-@import "login.scss";
-@import "group.scss";
+@import 'variables';
+@import 'common';
+@import 'mainpage';
+@import 'login';
+@import 'group';
+@import 'track';
 
 //endimports
 .browsehappy {
   margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
+  background: $grayc;
+  color: $black;
   padding: 0.2em 0;
 }
 body {
@@ -27,25 +29,25 @@ body {
   margin: 0;
 }
 .navbar {
-  background-color: #94bac7;
+  background-color: $seafrost;
   border-radius: 0;
-  border: none;
+  border: 0;
   margin-bottom: 0;
-  color: white;
+  color: $white;
 }
 .navbar-default {
   .navbar-brand {
-    color: white;
+    color: $white;
   }
   .navbar-nav {
     li {
       a {
-        color: white;
+        color: $white;
       }
     }
     .active {
       a {
-        color: #333;
+        color: $gray3;
         background-color: inherit;
         &:hover {
           background-color: inherit;
@@ -58,8 +60,8 @@ body {
   }
 }
 .navbar-toggle {
-  border: none;
-  background-color: #e3e1f6;
+  border: 0;
+  background-color: $pearlblue;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -85,25 +87,24 @@ body {
 //   margin: 0;
 // }
 /* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
+// .footer {
+//   padding-top: 19px;
+//   color: $gray7;
+//   border-top: 1px solid #e5e5e5;
+// }
 .container-narrow > hr {
   margin: 30px 0;
 }
 
 /* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-}
-
+// .jumbotron {
+//   text-align: center;
+//   border-bottom: 1px solid #e5e5e5;
+//   .btn {
+//     font-size: 21px;
+//     padding: 14px 24px;
+//   }
+// }
 /* Supporting marketing content */
 .marketing {
   margin: 40px 0;

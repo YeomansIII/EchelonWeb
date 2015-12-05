@@ -7,7 +7,7 @@
  * Manages authentication to any active providers.
  */
 angular.module('webApp')
-  .controller('LoginCtrl', function($scope, $http, Auth, $location, Spotify, Firebase) {
+  .controller('LoginCtrl', function($scope, $http, Auth, $location, Spotify, Firebase, $timeout) {
     var $loginPage = $('.login-page');
     $(window).resize(function() {
       $loginPage.height($(window).height());
@@ -88,33 +88,42 @@ angular.module('webApp')
 
 
     function redirect(data) {
-      var uid = data.id + '_spotify';
-      var ref = new Firebase('https://flickering-heat-6442.firebaseio.com/users/' + uid);
-      ref.once('value', function(snapshot) {
-        if (snapshot !== null) {
-          console.log('Got snapshot');
-          var userObj = {
-            country: data.country,
-            display_name: data.display_name,
-            email: data.email,
-            ext_url: data.external_urls.spotify,
-            id: data.id,
-            product: data.product,
-            type: data.type,
-            uri: data.uri
-          };
-          var images = data.images;
-          if (images.length > 0) {
-            userObj.image_url = images[0].url;
-          }
-          ref.set(userObj);
-        }
-        $scope.$apply(function() {
-          $location.path('/main');
+      console.log(data);
+      if (data.provider === 'anonymous') {
+        $timeout(function() {
+          $scope.$apply(function() {
+            $location.path('/main');
+          });
         });
-      }, function(errorObject) {
-        console.log('User read failed: ' + errorObject.code);
-      });
+      } else if (data.product) {
+        var uid = data.id + '_spotify';
+        var ref = new Firebase('https://flickering-heat-6442.firebaseio.com/users/' + uid);
+        ref.once('value', function(snapshot) {
+          if (snapshot !== null) {
+            console.log('Got snapshot');
+            var userObj = {
+              country: data.country,
+              display_name: data.display_name,
+              email: data.email,
+              ext_url: data.external_urls.spotify,
+              id: data.id,
+              product: data.product,
+              type: data.type,
+              uri: data.uri
+            };
+            var images = data.images;
+            if (images.length > 0) {
+              userObj.image_url = images[0].url;
+            }
+            ref.set(userObj);
+          }
+          $scope.$apply(function() {
+            $location.path('/main');
+          });
+        }, function(errorObject) {
+          console.log('User read failed: ' + errorObject.code);
+        });
+      }
     }
 
     function showError(err) {

@@ -7,8 +7,31 @@
 
     <div class="tab-content">
       <div id="queue" class="tab-pane active">
-        <h3>Queue</h3>
-        <p>Some content.</p>
+        <ul class="track-list">
+          <li class="track-list-item track-nowplaying">
+            <div class="track-container">
+              <img class="album-art" src="{{nowPlayingTrack.albumArtSmall}}" />
+              <div class="track-content">
+                <h5>{{nowPlayingTrack.title}}</h5>
+                <h5>{{nowPlayingTrack.artist}}</h5>
+              </div>
+            </div>
+          </li>
+          <li class="track-list-item" ng-repeat="track in tracks">
+            <div class="track-container">
+              <img class="album-art" src="{{track.albumArtSmall}}" />
+              <div class="track-content">
+                <h5>{{track.title}}</h5>
+                <h5>{{track.artist}}</h5>
+              </div>
+              <div class="track-vote-container">
+                <i class="mdi mdi-chevron-up" ng-click="voteUp(track)"></i>
+                <p>{{track.votedUp.length - track.votedDown.length}}</p>
+                <i class="mdi mdi-chevron-down" ng-click="voteDown(track)"></i>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
       <div id="participants" class="tab-pane">
         <h3>Participants</h3>
@@ -18,5 +41,5 @@
   </div>
 </div>
 <div class="group-action-bar">
-  <h4>Group Name</h4>
+  <h3 class="group-name" ng-bind="groupName"></h3>
 </div>
