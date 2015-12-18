@@ -20,8 +20,7 @@ angular.module('webApp', [
   'firebase.auth',
   'spotify',
   'ngAria',
-  'ngMaterial',
-  'ng-mfb'
+  'ngMaterial'
 ]).config(function(SpotifyProvider) {
   SpotifyProvider.setClientId(atob('OGI4MWUzZGVkZGNlNDJjNGIwZjI5NzJlMTgxYjhhM2E='));
   var origin = document.location.origin;
@@ -47,7 +46,7 @@ angular.module('webApp', [
 }).config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('cyan')
-    .accentPalette('blue')
+    .accentPalette('teal')
     .warnPalette('pink');
 });
 

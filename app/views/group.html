@@ -43,9 +43,25 @@
 <div class="group-action-bar">
   <h3 class="group-name" ng-bind="groupName"></h3>
 </div>
-<ul mfb-menu position="br" effect="zoomin" label="Add Song" active-icon="mdi mdi-plus mdi-32"
-resting-icon="mdi mdi-plus mdi-32" toggling-method="hover">
-  <button mfb-button icon="spoticon-search-32" label="Search"></button>
-  <button mfb-button icon="spoticon-collection-32" label="My Music"></button>
-  <button mfb-button icon="spoticon-browse-32" label="Browse Music"></button>
-</ul>
+<md-fab-speed-dial ng-hide="hidden" md-direction="up" md-open="isOpen"
+class="md-scale md-fab-bottom-right" ng-class="{ 'md-hover-full': hover }"
+ng-mouseenter="isOpen=true" ng-mouseleave="isOpen=false">
+  <md-fab-trigger>
+    <md-button aria-label="menu" class="md-fab md-warn">
+      <md-tooltip md-direction="left" md-visible="tooltipVisible">Menu</md-tooltip>
+      <md-icon class="nav-icon" md-font-icon="mdi mdi-plus mdi-32" aria-label="menu"></md-icon>
+    </md-button>
+  </md-fab-trigger>
+  <md-fab-actions>
+    <div ng-repeat="item in items">
+      <md-button aria-label="{{item.name}}" class="md-fab md-raised md-primary md-hue-2"
+      ng-click="openDialog($event, item)">
+        <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible"
+        md-autohide="false">
+          {{item.name}}
+        </md-tooltip>
+        <md-icon class="nav-icon" md-font-icon="{{item.icon}}" aria-label="{{item.name}}"></md-icon>
+      </md-button>
+    </div>
+  </md-fab-actions>
+</md-fab-speed-dial>

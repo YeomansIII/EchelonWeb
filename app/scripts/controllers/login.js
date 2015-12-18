@@ -105,7 +105,7 @@ angular.module('webApp')
         var uid = data.id + '_spotify';
         var ref = new Firebase('https://flickering-heat-6442.firebaseio.com/users/' + uid);
         ref.once('value', function(snapshot) {
-          if (snapshot !== null) {
+          if (snapshot.val() === null) {
             console.log('Got snapshot');
             var userObj = {
               country: data.country,

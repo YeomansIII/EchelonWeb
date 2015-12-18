@@ -47,7 +47,6 @@ angular.module('webApp')
     var userRef = ref.child('users/' + ref.getAuth().uid);
     var groupRef;
     userRef.child('cur_group').once('value', function(dataSnapshot) {
-      console.log('cur_group callback');
       if (dataSnapshot.val() === null) {
         $timeout(function() {
           $scope.$apply(function() {
@@ -136,4 +135,32 @@ angular.module('webApp')
         groupRef.child('tracks/' + track.key + '/votedDown/' + uid).set(true);
       }
     };
+
+    $scope.hidden = false;
+    $scope.isOpen = false;
+    $scope.hover = false;
+    // On opening, add a delayed property which shows tooltips after the speed dial has opened
+    // so that they have the proper position; if closing, immediately hide the tooltips
+    $scope.$watch('isOpen', function(isOpen) {
+      if (isOpen) {
+        $timeout(function() {
+          $scope.tooltipVisible = $scope.isOpen;
+        }, 600);
+      } else {
+        $scope.tooltipVisible = $scope.isOpen;
+      }
+    });
+    $scope.items = [{
+      name: 'Search',
+      icon: 'spoticon-search-32',
+      direction: 'left'
+    }, {
+      name: 'My Music',
+      icon: 'spoticon-collection-32',
+      direction: 'left'
+    }, {
+      name: 'Browse Music',
+      icon: 'spoticon-browse-32',
+      direction: 'left'
+    }];
   });

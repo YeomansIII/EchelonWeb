@@ -8,7 +8,7 @@
  * Controller of the webApp
  */
 angular.module('webApp')
-  .controller('MainCtrl', function($scope, $location, Auth, Firebase, Page) {
+  .controller('MainCtrl', function($scope, $timeout, $location, $mdDialog, Auth, Firebase, Page) {
     Page.setTitle('');
 
     $.urlParam = function(name) {
@@ -21,6 +21,8 @@ angular.module('webApp')
     };
 
     var ref = new Firebase('https://flickering-heat-6442.firebaseio.com/');
+    var uid = ref.getAuth().uid;
+    var userRef = ref.child('users/' + uid);
     var $mainPage = $('.main-page');
     $(window).resize(function() {
       $mainPage.height($('#content').height());
@@ -70,7 +72,57 @@ angular.module('webApp')
       Auth.$unauth();
     };
 
-    if($.urlParam('action') === 'join') {
+    $scope.checkGroup = function() {
+      userRef.child('cur_group').once('value', function(dataSnapshot) {
+        if (dataSnapshot.val() !== null) {
+          var groupName = dataSnapshot.val();
+          var groupRef = ref.child('queuegroups/' + groupName);
+          groupRef.once('value', function(dataSnapshot2) {
+            if (dataSnapshot2.child('leader').val() === uid) {
+              var confirm = $mdDialog.confirm()
+                .title('You are the leader of a group')
+                .textContent('You are the leader of "' + groupName + '", would you like to go to it?')
+                .ariaLabel('Already in group')
+                .ok('Take me to it!')
+                .cancel('Destroy the group');
+              $mdDialog.show(confirm).then(function() {
+                $timeout(function() {
+                  $scope.$apply(function() {
+                    $location.path('/group');
+                  });
+                });
+              }, function() {
+                userRef.child('cur_group').remove();
+                ref.child('queuegroups/' + groupName).remove();
+              });
+            } else if (dataSnapshot2.child('participants/' + uid).val() !== null) {
+              var confirm2 = $mdDialog.confirm()
+                .title('You are in a group')
+                .textContent('You are already a part of "' + groupName + '", would you like to go to it?')
+                .ariaLabel('Already in group')
+                .ok('Take me to it!')
+                .cancel('Leave group');
+              $mdDialog.show(confirm2).then(function() {
+                $timeout(function() {
+                  $scope.$apply(function() {
+                    $location.path('/group');
+                  });
+                });
+              }, function() {
+                userRef.child('cur_group').remove();
+                ref.child('queuegroups/' + groupName + '/participants/' + uid).remove();
+              });
+            } else {
+              userRef.child('cur_group').remove();
+            }
+          });
+        }
+      });
+    };
+
+    if ($.urlParam('action') === 'join') {
       $scope.joinGroup();
     }
+
+    $scope.checkGroup();
   });
