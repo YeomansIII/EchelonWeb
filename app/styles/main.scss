@@ -2,9 +2,12 @@ $icon-font-path: '../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "ng-material-floating-button/mfb/src/mfb.scss";
+
 // endbower
 //imports
 @import 'variables';
+@import 'spoticon';
 @import 'common';
 @import 'mainpage';
 @import 'login';
@@ -27,6 +30,31 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
+}
+.menu {
+  background-color: transparent;
+  margin: 0 6px;
+  min-width: 0;
+  line-height: 24px;
+  padding: 8px;
+  width: 40px;
+  md-icon {
+    vertical-align: top;
+  }
+}
+.nav-icon {
+  width: 60px;
+  height: 32px;
+}
+.nav-item {
+  width: 100%;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  line-height: 48px;
+  md-icon {
+    text-align: center;
+  }
 }
 .navbar {
   background-color: $seafrost;

@@ -7,7 +7,7 @@
  * A demo of using AngularFire to manage a synchronized list.
  */
 angular.module('webApp')
-  .controller('GroupCtrl', function($scope, $location, Page, Firebase) {
+  .controller('GroupCtrl', function($scope, $location, $timeout, Page, Firebase) {
     Page.setTitle('- Group');
 
     $scope.safeApply = function(fn) {
@@ -47,10 +47,13 @@ angular.module('webApp')
     var userRef = ref.child('users/' + ref.getAuth().uid);
     var groupRef;
     userRef.child('cur_group').once('value', function(dataSnapshot) {
+      console.log('cur_group callback');
       if (dataSnapshot.val() === null) {
-        $scope.$apply(function() {
-          $location.path('/').search({
-            action: 'join'
+        $timeout(function() {
+          $scope.$apply(function() {
+            $location.path('/').search({
+              action: 'join'
+            });
           });
         });
       } else {
@@ -58,9 +61,11 @@ angular.module('webApp')
         groupRef = ref.child('queuegroups/' + $scope.groupName);
         groupRef.on('value', function(dataSnapshot2) {
           if (dataSnapshot2.val() === null) {
-            $scope.$apply(function() {
-              $location.path('/').search({
-                action: 'join'
+            $timeout(function() {
+              $scope.$apply(function() {
+                $location.path('/').search({
+                  action: 'join'
+                });
               });
             });
           } else {

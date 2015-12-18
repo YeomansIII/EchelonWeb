@@ -15,11 +15,13 @@ angular.module('webApp', [
   'ngResource',
   'ngRoute',
   'ngSanitize',
-  'ngTouch',
   'firebase',
   'firebase.ref',
   'firebase.auth',
-  'spotify'
+  'spotify',
+  'ngAria',
+  'ngMaterial',
+  'ng-mfb'
 ]).config(function(SpotifyProvider) {
   SpotifyProvider.setClientId(atob('OGI4MWUzZGVkZGNlNDJjNGIwZjI5NzJlMTgxYjhhM2E='));
   var origin = document.location.origin;
@@ -42,11 +44,28 @@ angular.module('webApp', [
       title = newTitle;
     }
   };
+}).config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('cyan')
+    .accentPalette('blue')
+    .warnPalette('pink');
 });
 
 angular.module('webApp')
   .controller('HtmlCtrl', function($scope, Page) {
     $scope.Page = Page;
+  });
+
+angular.module('webApp')
+  .controller('NavCtrl', function($scope, $mdSidenav) {
+    console.log('start NavCtrl');
+    $scope.openLeftMenu = function() {
+      console.log('openLeftMenu clicked');
+      $mdSidenav('left').toggle();
+    };
+    $scope.closeLeftMenu = function() {
+      $mdSidenav('left').close();
+    };
   });
 
 $('.navbar-nav li').click(function() {

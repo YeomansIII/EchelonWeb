@@ -9,10 +9,14 @@
 angular.module('webApp')
   .controller('LoginCtrl', function($scope, $http, Auth, $location, Spotify, Firebase, $timeout) {
     var $loginPage = $('.login-page');
+    var $mainToolbar = $('.main-toolbar');
+    var $sideNavLeft = $('.md-sidenav-left');
+    $mainToolbar.hide();
+    $sideNavLeft.hide();
     $(window).resize(function() {
-      $loginPage.height($(window).height());
+      $loginPage.height($('#content').height());
     });
-    $loginPage.height($(window).height());
+    $loginPage.height($('#content').height());
 
     $scope.oauthLogin = function(provider) {
       $scope.err = null;
@@ -91,6 +95,8 @@ angular.module('webApp')
       console.log(data);
       if (data.provider === 'anonymous') {
         $timeout(function() {
+          $mainToolbar.show();
+          $sideNavLeft.show();
           $scope.$apply(function() {
             $location.path('/main');
           });
@@ -117,6 +123,8 @@ angular.module('webApp')
             }
             ref.set(userObj);
           }
+          $mainToolbar.show();
+          $sideNavLeft.show();
           $scope.$apply(function() {
             $location.path('/main');
           });

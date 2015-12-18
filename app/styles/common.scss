@@ -1,3 +1,5 @@
+@import 'variables';
+
 .center-both-flex {
   display: -webkit-box;
   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -18,20 +20,32 @@
   border-radius: 1px;
 }
 .btn-echelon-prim {
-  background-color: #57387b;
-  color: white;
+  background-color: $heromode;
+  color: $white;
   transition: background-color 0.5s ease;
   &:hover {
-    color: white;
-    background-color: #342149;
+    color: $white;
+    background-color: $heromodedark;
   }
 }
 .btn-echelon-trans {
   background-color: transparent;
-  color: #57387b;
+  color: $heromode;
   transition: background-color 0.5s ease;
   &:hover {
-    color: #57387b;
-    background-color: rgba(0, 0, 0, 0.1);
+    color: $heromode;
+    background-color: $trans1;
   }
+}
+.mdi-16:before {
+  font-size: 16px;
+}
+.mdi-24:before {
+  font-size: 24px;
+}
+.mdi-32:before {
+  font-size: 32px;
+}
+.mdi-gray:before {
+  color: $gray7;
 }

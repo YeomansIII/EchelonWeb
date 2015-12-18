@@ -157,8 +157,8 @@ linters:
   UrlQuotes:
     enabled: true
 
-  VendorPrefixes:
-    enabled: true
+  VendorPrefix:
+    enabled: false
     identifier_list: base
     include: []
     exclude: []

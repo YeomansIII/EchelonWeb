@@ -9,8 +9,14 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/mdi/css/materialdesignicons.css" />
-  <link rel="stylesheet" href="bower_components/mdi/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="bower_components/mdi/css/materialdesignicons.css"
+  />
+  <link rel="stylesheet" href="bower_components/mdi/css/materialdesignicons.min.css"
+  />
+  <link rel="stylesheet" href="bower_components/ng-material-floating-button/mfb/dist/mfb.css"
+  />
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"
+  />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
@@ -18,13 +24,13 @@
   <!-- endbuild -->
 </head>
 
-<body>
+<body layout="column" ng-controller="NavCtrl as nav">
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
   <!-- Add your site or application content here -->
-  <div ng-show-auth="" class="header" ng-cloak="">
+  <!-- <div ng-show-auth="" class="header" ng-cloak="">
     <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -44,7 +50,6 @@
 
           <ul class="nav navbar-nav">
             <li class="active"><a href="#/">Home</a></li>
-            <!-- //angularfire -->
             <li><a ng-href="#/group">Group</a></li>
             <li>
               <a ng-hide-auth="" href="#/login">Login</a>
@@ -55,10 +60,51 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="container-main">
-    <div ng-view=""></div>
+  <md-toolbar layout="row" class="main-toolbar md-theme-indigo">
+    <md-button class="menu" hide-gt-sm ng-click="openLeftMenu()" aria-label="Menu">
+      <md-icon md-font-icon="mdi mdi-menu mdi-24"></md-icon>
+    </md-button>
+    <h1 class="md-toolbar-tools">Echelon</h1>
+  </md-toolbar>
+  <div flex layout="row">
+    <md-sidenav class="md-sidenav-left md-whiteframe-10dp" md-is-locked-open="$mdMedia('gt-sm')"
+    md-component-id="left">
+      <md-toolbar class="md-theme-indigo" hide-gt-sm>
+        <h1 class="md-toolbar-tools">Menu</h1>
+      </md-toolbar>
+      <md-list>
+
+        <!-- List item #1 -->
+        <md-list-item>
+          <md-button class="nav-item" ng-click="closeLeftMenu()" href="#/">
+            <md-icon class="nav-icon mdi mdi-home mdi-32"></md-icon>
+            Home
+          </md-button>
+        </md-list-item>
+
+        <!-- List item #2 -->
+        <md-list-item>
+          <md-button class="nav-item" ng-click="closeLeftMenu()" href="#/group">
+            <md-icon class="nav-icon" md-svg-src="images/icons/queue_music.svg"></md-icon>
+            Group
+          </md-button>
+        </md-list-item>
+
+        <!-- List item #3 -->
+        <md-list-item>
+          <md-button class="nav-item" ng-click="closeLeftMenu()" href="#/account">
+            <md-icon class="nav-icon mdi mdi-account mdi-32"></md-icon>
+            Account
+          </md-button>
+        </md-list-item>
+
+      </md-list>
+    </md-sidenav>
+    <md-content flex id="content">
+      <div ng-view=""></div>
+    </md-content>
   </div>
 
   <!-- Piwik -->
@@ -82,8 +128,8 @@
   </script>
   <noscript>
     <p>
-      <img src="//yeomans.io/piwik/piwik.php?idsite=2" style="border:0;"
-      alt="" />
+      <img src="//yeomans.io/piwik/piwik.php?idsite=2" style="border:0;" alt=""
+      />
     </p>
   </noscript>
   <!-- End Piwik Code -->
@@ -103,6 +149,9 @@
   <script src="bower_components/firebase/firebase.js"></script>
   <script src="bower_components/angularfire/dist/angularfire.js"></script>
   <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+  <script src="bower_components/ng-material-floating-button/src/mfb-directive.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
