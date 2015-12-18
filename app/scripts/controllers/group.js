@@ -7,7 +7,7 @@
  * A demo of using AngularFire to manage a synchronized list.
  */
 angular.module('webApp')
-  .controller('GroupCtrl', function($scope, $location, $timeout, Page, Firebase) {
+  .controller('GroupCtrl', function($scope, $location, $timeout, Page, Ref) {
     Page.setTitle('- Group');
 
     $scope.safeApply = function(fn) {
@@ -43,8 +43,8 @@ angular.module('webApp')
       return result;
     };
 
-    var ref = new Firebase('https://flickering-heat-6442.firebaseio.com/');
-    var userRef = ref.child('users/' + ref.getAuth().uid);
+    var uid = Ref.getAuth().uid;
+    var userRef = Ref.child('users/' + uid);
     var groupRef;
     userRef.child('cur_group').once('value', function(dataSnapshot) {
       if (dataSnapshot.val() === null) {
@@ -57,7 +57,7 @@ angular.module('webApp')
         });
       } else {
         $scope.groupName = dataSnapshot.val();
-        groupRef = ref.child('queuegroups/' + $scope.groupName);
+        groupRef = Ref.child('queuegroups/' + $scope.groupName);
         groupRef.on('value', function(dataSnapshot2) {
           if (dataSnapshot2.val() === null) {
             $timeout(function() {
@@ -117,7 +117,6 @@ angular.module('webApp')
 
     $scope.voteUp = function(track) {
       console.log('Vote Up: ' + track.key);
-      var uid = ref.getAuth().uid;
       if (track.votedUp !== undefined && track.votedUp.indexOf(uid) > -1) {
         groupRef.child('tracks/' + track.key + '/votedUp/' + uid).remove();
       } else {
@@ -127,7 +126,6 @@ angular.module('webApp')
     };
     $scope.voteDown = function(track) {
       console.log('Vote Down: ' + track.key);
-      var uid = ref.getAuth().uid;
       if (track.votedDown !== undefined && track.votedDown.indexOf(uid) > -1) {
         groupRef.child('tracks/' + track.key + '/votedDown/' + uid).remove();
       } else {
@@ -139,6 +137,14 @@ angular.module('webApp')
     $scope.hidden = false;
     $scope.isOpen = false;
     $scope.hover = false;
+    $scope.searchMusic = function() {
+      console.log('searchmusic');
+      $timeout(function() {
+        $scope.$apply(function() {
+          $location.path('/search/music');
+        });
+      });
+    };
     // On opening, add a delayed property which shows tooltips after the speed dial has opened
     // so that they have the proper position; if closing, immediately hide the tooltips
     $scope.$watch('isOpen', function(isOpen) {
@@ -150,10 +156,11 @@ angular.module('webApp')
         $scope.tooltipVisible = $scope.isOpen;
       }
     });
-    $scope.items = [{
+    $scope.fabItems = [{
       name: 'Search',
       icon: 'spoticon-search-32',
-      direction: 'left'
+      direction: 'left',
+      click: 'searchMusic()'
     }, {
       name: 'My Music',
       icon: 'spoticon-collection-32',

@@ -1,0 +1,23 @@
+<div class="searchmusic-page">
+  <div class="search-input-wrapper">
+    <md-input-container class="search-input-container search-form">
+      <label>Search</label>
+      <input type="text" ng-model="query">
+    </md-input-container>
+    <br/>
+    <md-button class="md-raised md-primary search-form" ng-click="makeSearch()">Search</md-button>
+  </div>
+  <div id="queue">
+    <ul class="track-list">
+      <li class="track-list-item" ng-repeat="track in tracks">
+        <div class="track-container">
+          <img class="album-art" src="{{track.albumArtSmall}}" />
+          <div class="track-content">
+            <h5>{{track.title}}</h5>
+            <h5>{{track.artist}}</h5>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

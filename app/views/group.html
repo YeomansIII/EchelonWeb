@@ -53,9 +53,9 @@ ng-mouseenter="isOpen=true" ng-mouseleave="isOpen=false">
     </md-button>
   </md-fab-trigger>
   <md-fab-actions>
-    <div ng-repeat="item in items">
+    <div ng-repeat="item in fabItems">
       <md-button aria-label="{{item.name}}" class="md-fab md-raised md-primary md-hue-2"
-      ng-click="openDialog($event, item)">
+      ng-click="{{item.click}}">
         <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible"
         md-autohide="false">
           {{item.name}}
