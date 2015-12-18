@@ -274,8 +274,17 @@ module.exports = function(grunt) {
         assetsDirs: [
           '<%= yeoman.dist %>',
           '<%= yeoman.dist %>/images',
+          '<%= yeoman.dist %>/images/icons',
           '<%= yeoman.dist %>/styles'
-        ]
+        ],
+        patterns: {
+          html: [
+            [
+              /<md-icon[^\>]*[^\>\S]+md-svg-src=['"]([^'"\)#]+)(#.+)?["']/gm,
+              'Update the HTML with the new your-directive-name-here images'
+            ]
+          ]
+        }
       }
     },
 
