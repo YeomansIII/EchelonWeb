@@ -2,6 +2,7 @@ $icon-font-path: '../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+
 // endbower
 //imports
 @import 'variables';
@@ -29,6 +30,9 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
+}
+.content {
+  background-color: $ghostwhite;
 }
 .menu {
   background-color: transparent;

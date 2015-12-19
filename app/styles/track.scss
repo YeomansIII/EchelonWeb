@@ -7,7 +7,7 @@
     position: relative;
     .track-container {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: flex-start;
       .album-art {
         width: 65px;
@@ -39,5 +39,26 @@
         height: 80px;
       }
     }
+  }
+}
+.add-song-list {
+  .track-list {
+    width: 30em;
+    max-width: 100%;
+    margin: 10px auto;
+    .track-container {
+      justify-content: space-between;
+      .track-left {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+.track-item {
+  .card-media {
+    margin-right: 10px;
   }
 }
