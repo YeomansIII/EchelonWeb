@@ -160,14 +160,16 @@ angular.module('webApp')
       name: 'Search',
       icon: 'spoticon-search-32',
       direction: 'left',
-      click: 'searchMusic()'
+      click: 'searchMusic'
     }, {
       name: 'My Music',
       icon: 'spoticon-collection-32',
-      direction: 'left'
+      direction: 'left',
+      click: 'null'
     }, {
       name: 'Browse Music',
       icon: 'spoticon-browse-32',
-      direction: 'left'
+      direction: 'left',
+      click: 'null'
     }];
   });
