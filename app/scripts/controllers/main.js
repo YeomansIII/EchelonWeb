@@ -80,11 +80,12 @@ angular.module('webApp')
           groupRef.once('value', function(dataSnapshot2) {
             if (dataSnapshot2.child('leader').val() === uid) {
               var confirm = $mdDialog.confirm()
+                .clickOutsideToClose(true)
                 .title('You are the leader of a group')
                 .textContent('You are the leader of "' + groupName + '", would you like to go to it?')
                 .ariaLabel('Already in group')
                 .ok('Take me to it!')
-                .cancel('Destroy the group');
+                .cancel('Destroy');
               $mdDialog.show(confirm).then(function() {
                 $timeout(function() {
                   $scope.$apply(function() {
@@ -97,11 +98,12 @@ angular.module('webApp')
               });
             } else if (dataSnapshot2.child('participants/' + uid).val() !== null) {
               var confirm2 = $mdDialog.confirm()
+                .clickOutsideToClose(true)
                 .title('You are in a group')
                 .textContent('You are already a part of "' + groupName + '", would you like to go to it?')
                 .ariaLabel('Already in group')
                 .ok('Take me to it!')
-                .cancel('Leave group');
+                .cancel('Leave');
               $mdDialog.show(confirm2).then(function() {
                 $timeout(function() {
                   $scope.$apply(function() {

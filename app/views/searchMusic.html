@@ -4,22 +4,11 @@
       <label>Search</label>
       <input type="text" ng-model="query">
     </md-input-container>
-    <br/>
     <md-button class="md-raised md-primary search-form" ng-click="makeSearch()">Search</md-button>
   </div>
   <div class="add-song-list">
     <ul class="track-list">
-      <li class="track-list-item" ng-repeat="track in tracks">
-        <!-- <div class="track-container">
-          <div class="track-left">
-            <img class="album-art" src="{{track.albumArtSmall}}" />
-            <div class="track-content">
-              <h5>{{track.title}}</h5>
-              <h5>{{track.artist}}</h5>
-            </div>
-          </div>
-          <md-button class="md-primary">Add Song</md-button>
-        </div> -->
+      <li class="track-list-item" ng-repeat="track in tracks track by track.songId">
         <md-card class="track-item">
           <md-card-title>
             <md-card-title-media>
@@ -33,7 +22,7 @@
             </md-card-title-text>
           </md-card-title>
           <md-card-actions layout="row" layout-align="end center">
-            <md-button>Add To Queue</md-button>
+            <md-button ng-click="addSongToQueue($index)">Add To Queue</md-button>
           </md-card-actions>
         </md-card>
       </li>

@@ -26,9 +26,11 @@
        }
      });
 
-     var addSongData = function(addObj) {
+     this.addSongData = function(addObj) {
        if (groupRef !== undefined) {
+         console.log(addObj);
          var pushRef = groupRef.child('tracks').push();
+         addObj.key = pushRef.key();
          pushRef.set(addObj);
        }
      };

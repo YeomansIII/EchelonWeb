@@ -1,9 +1,27 @@
-.search-input-wrapper {
-  width: 100%;
-  text-align: center;
-  .search-input-container {
+.searchmusic-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-transition: height 2s;
+  transition: height 2s;
+  .search-input-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     width: 30em;
+    max-width: 90%;
+    margin-top: 20px;
+    .search-input-container {
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
+  .add-song-list {
+    max-height: 0;
     max-width: 100%;
-    margin: 30px 0 0;
+    overflow-y: hidden;
+    -webkit-transition: max-height 5s;
+    transition: max-height 5s;
   }
 }
