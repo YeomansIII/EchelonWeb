@@ -2,6 +2,10 @@
 .group-page {
   position: relative;
   overflow: hidden;
+  .tab-content {
+    height: calc(100% - 42px);
+    overflow-y: scroll;
+  }
 }
 .group-page-home {
   height: 100%;

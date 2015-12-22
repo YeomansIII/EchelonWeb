@@ -43,7 +43,7 @@
 <div class="group-action-bar">
   <h3 class="group-name" ng-bind="groupName"></h3>
 </div>
-<md-fab-speed-dial ng-hide="hidden" md-direction="up" md-open="isOpen"
+<md-fab-speed-dial ng-hide="hidden" ng-cloak md-direction="up" md-open="isOpen"
 class="md-scale md-fab-bottom-right" ng-class="{ 'md-hover-full': hover }"
 ng-mouseenter="isOpen=true" ng-mouseleave="isOpen=false">
   <md-fab-trigger>
