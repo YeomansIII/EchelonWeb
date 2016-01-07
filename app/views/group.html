@@ -25,9 +25,9 @@
                 <h5>{{track.artist}}</h5>
               </div>
               <div class="track-vote-container">
-                <i class="mdi mdi-chevron-up" ng-click="voteUp(track)"></i>
+                <i ng-class="track.isVotedUp" class="mdi mdi-chevron-up" ng-click="voteUp(track)"></i>
                 <p>{{track.votedUp.length - track.votedDown.length}}</p>
-                <i class="mdi mdi-chevron-down" ng-click="voteDown(track)"></i>
+                <i ng-class="track.isVotedDown" class="mdi mdi-chevron-down" ng-click="voteDown(track)"></i>
               </div>
             </div>
           </li>
@@ -55,7 +55,7 @@ ng-mouseenter="isOpen=true" ng-mouseleave="isOpen=false">
   <md-fab-actions>
     <div ng-repeat="item in fabItems">
       <md-button aria-label="{{item.name}}" class="md-fab md-raised md-primary md-hue-2"
-      ng-click="searchMusic()">
+      ng-click="item.click()">
         <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible"
         md-autohide="false">
           {{item.name}}

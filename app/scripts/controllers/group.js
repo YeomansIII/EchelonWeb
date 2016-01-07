@@ -80,9 +80,15 @@ angular.module('webApp')
               var temp = childSnapshot.val();
               if (temp.nowPlaying !== true && temp.played !== true) {
                 if (temp.votedUp !== undefined) {
+                  if(uid in temp.votedUp) {
+                    temp.isVotedUp = 'voted-up';
+                  }
                   temp.votedUp = Object.keys(temp.votedUp);
                 }
                 if (temp.votedDown !== undefined) {
+                  if(uid in temp.votedDown) {
+                    temp.isVotedDown = 'voted-down';
+                  }
                   temp.votedDown = Object.keys(temp.votedDown);
                 }
                 tracksArr.push(temp);
@@ -145,10 +151,16 @@ angular.module('webApp')
     $scope.isOpen = false;
     $scope.hover = false;
     $scope.searchMusic = function() {
-      console.log('searchmusic');
       $timeout(function() {
         $scope.$apply(function() {
-          $location.path('/search/music');
+          $location.path('/queue/search');
+        });
+      });
+    };
+    $scope.browseMusic = function() {
+      $timeout(function() {
+        $scope.$apply(function() {
+          $location.path('/queue/browse');
         });
       });
     };
@@ -167,12 +179,12 @@ angular.module('webApp')
       name: 'Search',
       icon: 'spoticon-search-32',
       direction: 'left',
-      click: 'searchMusic'
+      click: $scope.searchMusic
     }, {
       name: 'My Music',
       icon: 'spoticon-collection-32',
       direction: 'left',
-      click: 'null'
+      click: $scope.browseMusic
     }, {
       name: 'Browse Music',
       icon: 'spoticon-browse-32',

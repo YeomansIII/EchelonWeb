@@ -77,9 +77,17 @@ angular.module('webApp')
       templateUrl: 'views/account.html',
       controller: 'AccountCtrl'
     })
-    .whenAuthenticated('/search/music', {
+    .whenAuthenticated('/queue/search', {
       templateUrl: 'views/searchMusic.html',
       controller: 'SearchMusicCtrl'
+    })
+    .whenAuthenticated('/queue/browse', {
+      templateUrl: 'views/browseMusic.html',
+      controller: 'BrowseMusicCtrl'
+    })
+    .whenAuthenticated('/queue/browse/playlist/:uid/:pid', {
+      templateUrl: 'views/listMusic.html',
+      controller: 'ListMusicCtrl'
     })
     .otherwise({
       redirectTo: '/'

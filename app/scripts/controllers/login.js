@@ -40,11 +40,10 @@
          if (spotToke === 'null') {
            waitSpotify();
          } else {
-           console.log(spotToke);
+           Spotify.setAuthToken(spotToke);
            Spotify.getCurrentUser().then(function(data) {
              console.log(data);
              var uid = data.id + '_spotify';
-
              $http({
                url: 'https://api.echelonapp.io:8081/spotify-auth/',
                method: 'POST',
