@@ -80,13 +80,13 @@ angular.module('webApp')
               var temp = childSnapshot.val();
               if (temp.nowPlaying !== true && temp.played !== true) {
                 if (temp.votedUp !== undefined) {
-                  if(uid in temp.votedUp) {
+                  if (uid in temp.votedUp) {
                     temp.isVotedUp = 'voted-up';
                   }
                   temp.votedUp = Object.keys(temp.votedUp);
                 }
                 if (temp.votedDown !== undefined) {
-                  if(uid in temp.votedDown) {
+                  if (uid in temp.votedDown) {
                     temp.isVotedDown = 'voted-down';
                   }
                   temp.votedDown = Object.keys(temp.votedDown);
@@ -184,11 +184,11 @@ angular.module('webApp')
       name: 'My Music',
       icon: 'spoticon-collection-32',
       direction: 'left',
-      click: $scope.browseMusic
+      click: 'null'
     }, {
       name: 'Browse Music',
       icon: 'spoticon-browse-32',
       direction: 'left',
-      click: 'null'
+      click: $scope.browseMusic
     }];
   });
