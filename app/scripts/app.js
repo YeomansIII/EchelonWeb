@@ -29,7 +29,7 @@ angular.module('webApp', [
   } else {
     SpotifyProvider.setRedirectUri(atob('aHR0cHM6Ly9lY2hlbG9uYXBwLmlvL3Nwb3RpZnktY2FsbGJhY2suaHRtbA=='));
   }
-  SpotifyProvider.setScope('user-read-private user-read-email');
+  SpotifyProvider.setScope('user-read-private user-read-email playlist-read-private playlist-read-collaborative');
 }).config(['$httpProvider', function($httpProvider) {
   $httpProvider.defaults.useXDomain = true;
   delete $httpProvider.defaults.headers.common['X-Requested-With'];

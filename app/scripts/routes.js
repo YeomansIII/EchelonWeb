@@ -89,6 +89,10 @@ angular.module('webApp')
       templateUrl: 'views/listMusic.html',
       controller: 'ListMusicCtrl'
     })
+    .whenAuthenticated('/queue/yourmusic', {
+      templateUrl: 'views/yourMusic.html',
+      controller: 'YourMusicCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });

@@ -164,6 +164,13 @@ angular.module('webApp')
         });
       });
     };
+    $scope.yourMusic = function() {
+      $timeout(function() {
+        $scope.$apply(function() {
+          $location.path('/queue/yourmusic');
+        });
+      });
+    };
     // On opening, add a delayed property which shows tooltips after the speed dial has opened
     // so that they have the proper position; if closing, immediately hide the tooltips
     $scope.$watch('isOpen', function(isOpen) {
@@ -184,7 +191,7 @@ angular.module('webApp')
       name: 'My Music',
       icon: 'spoticon-collection-32',
       direction: 'left',
-      click: 'null'
+      click: $scope.yourMusic
     }, {
       name: 'Browse Music',
       icon: 'spoticon-browse-32',

@@ -16,17 +16,30 @@ angular.module('webApp')
 
     var uid = Ref.getAuth().uid;
     var userRef = Ref.child('users/' + uid);
-
+    var spotifyId = '';
     $scope.playlists = [];
-    Spotify.getUserPlaylists(userRef.id, {
-        limit: 10
-      })
-      .then(function(data) {
-        $scope.featured = data;
-      });
+    var offset = 0;
+
+    $scope.load = function() {
+      Spotify.getUserPlaylists(spotifyId, {
+          limit: 10,
+          offset: offset
+        })
+        .then(function(data) {
+          offset += 10;
+          data.items.forEach(function(currentValue) {
+            $scope.playlists.push(currentValue);
+          });
+        });
+    };
+
+    userRef.child('id').once('value', function(dataSnapshot) {
+      spotifyId = dataSnapshot.val();
+      $scope.load();
+    });
 
     $scope.viewPlaylist = function(index) {
-      var playlist = $scope.featured.playlists.items[index];
+      var playlist = $scope.playlists[index];
       $timeout(function() {
         $scope.$apply(function() {
           $location.path('/queue/browse/playlist/' + playlist.owner.id + '/' + playlist.id);

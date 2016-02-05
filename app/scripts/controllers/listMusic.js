@@ -13,10 +13,10 @@ angular.module('webApp')
     $scope.pid = $routeParams.pid;
     $scope.query = '';
     $scope.tracks = [];
+    $scope.title = 'Loading...';
     Spotify.getPlaylist($scope.uid, $scope.pid).then(function(data) {
-      console.log(data);
+      $scope.title = data.name;
       data.tracks.items.forEach(function(object) {
-        console.log(object);
         object = object.track;
         //$searchPage.css('justify-content', 'flex-start');
         $('.add-song-list').css('max-height', '5000px');
