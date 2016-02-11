@@ -10,13 +10,6 @@ angular.module('webApp')
   .controller('GroupCtrl', function($scope, $location, $timeout, Page, Ref) {
     Page.setTitle('- Group');
 
-    var $groupPage = $('.group-page');
-    var $content = $('.content');
-    $(window).resize(function() {
-      $groupPage.height($content.height() - 50);
-    });
-    $groupPage.height($content.height() - 50);
-
     $scope.safeApply = function(fn) {
       var phase = this.$root.$$phase;
       if (phase === '$apply' || phase === '$digest') {

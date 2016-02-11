@@ -1,44 +1,37 @@
 <div class="group-page">
-  <div class="group-page-home">
-    <ul class="nav nav-tabs">
-      <li id="queue-tab" class="active"><a ng-click="queueTab()">Queue</a></li>
-      <li id="partic-tab"><a ng-click="participantsTab()">Participants</a></li>
-    </ul>
-
-    <div class="tab-content">
-      <div id="queue" class="tab-pane active">
-        <ul class="track-list">
-          <li class="track-list-item track-nowplaying">
-            <div class="track-container">
-              <img class="album-art" src="{{nowPlayingTrack.albumArtSmall}}" />
-              <div class="track-content">
-                <h5>{{nowPlayingTrack.title}}</h5>
-                <h5>{{nowPlayingTrack.artist}}</h5>
-              </div>
+  <md-tabs md-border-bottom>
+    <md-tab label="queue">
+      <ul class="track-list">
+        <li class="track-list-item track-nowplaying">
+          <div class="track-container">
+            <img class="album-art" src="{{nowPlayingTrack.albumArtSmall}}" />
+            <div class="track-content">
+              <h5>{{nowPlayingTrack.title}}</h5>
+              <h5>{{nowPlayingTrack.artist}}</h5>
             </div>
-          </li>
-          <li class="track-list-item" ng-repeat="track in tracks">
-            <div class="track-container">
-              <img class="album-art" src="{{track.albumArtSmall}}" />
-              <div class="track-content">
-                <h5>{{track.title}}</h5>
-                <h5>{{track.artist}}</h5>
-              </div>
-              <div class="track-vote-container">
-                <i ng-class="track.isVotedUp" class="mdi mdi-chevron-up" ng-click="voteUp(track)"></i>
-                <p>{{track.votedUp.length - track.votedDown.length}}</p>
-                <i ng-class="track.isVotedDown" class="mdi mdi-chevron-down" ng-click="voteDown(track)"></i>
-              </div>
+          </div>
+        </li>
+        <li class="track-list-item" ng-repeat="track in tracks">
+          <div class="track-container">
+            <img class="album-art" src="{{track.albumArtSmall}}" />
+            <div class="track-content">
+              <h5>{{track.title}}</h5>
+              <h5>{{track.artist}}</h5>
             </div>
-          </li>
-        </ul>
-      </div>
-      <div id="participants" class="tab-pane">
-        <h3>Participants</h3>
-        <p>Some content in menu 1.</p>
-      </div>
-    </div>
-  </div>
+            <div class="track-vote-container">
+              <i ng-class="track.isVotedUp" class="mdi mdi-chevron-up" ng-click="voteUp(track)"></i>
+              <p>{{track.votedUp.length - track.votedDown.length}}</p>
+              <i ng-class="track.isVotedDown" class="mdi mdi-chevron-down" ng-click="voteDown(track)"></i>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </md-tab>
+    <md-tab label="participants">
+      <h3>Participants</h3>
+      <p>Some content in menu 1.</p>
+    </md-tab>
+</div>
 </div>
 <div class="group-action-bar">
   <h3 class="group-name" ng-bind="groupName"></h3>

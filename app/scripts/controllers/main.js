@@ -23,11 +23,6 @@ angular.module('webApp')
     var ref = new Firebase('https://flickering-heat-6442.firebaseio.com/');
     var uid = ref.getAuth().uid;
     var userRef = ref.child('users/' + uid);
-    var $mainPage = $('.main-page');
-    $(window).resize(function() {
-      $mainPage.height($('#content').height());
-    });
-    $mainPage.height($('#content').height());
     var $mainPageHome = $('.main-page-home');
     var $mainPageJoin = $('.main-page-join');
     $scope.joinGroup = function() {

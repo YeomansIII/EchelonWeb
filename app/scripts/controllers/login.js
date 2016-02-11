@@ -9,15 +9,10 @@
   */
  angular.module('webApp')
    .controller('LoginCtrl', function($scope, $http, Auth, $location, Spotify, Ref, $timeout) {
-     var $loginPage = $('.login-page');
      var $mainToolbar = $('.main-toolbar');
      var $sideNavLeft = $('.md-sidenav-left');
      $mainToolbar.hide();
      $sideNavLeft.hide();
-     $(window).resize(function() {
-       $loginPage.height($('#content').height());
-     });
-     $loginPage.height($('#content').height());
 
      $scope.oauthLogin = function(provider) {
        $scope.err = null;
