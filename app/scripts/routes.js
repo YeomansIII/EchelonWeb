@@ -57,7 +57,11 @@ angular.module('webApp')
 // before trying to access that route
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
-    .whenAuthenticated('/', {
+    .when('/', {
+      templateUrl: 'views/home.html',
+      controller: 'HomeCtrl'
+    })
+    .whenAuthenticated('/web', {
       templateUrl: 'views/main.html',
       controller: 'MainCtrl'
     })
