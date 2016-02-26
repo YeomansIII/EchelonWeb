@@ -3,47 +3,67 @@
 .home-page {
   height: 100vh;
   overflow: hidden;
-  .white-box {
-    background: $white;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+  .dif-components {
     position: absolute;
     top: 0;
-  }
-  .black-box {
-    background: $black;
-    width: 100vw;
-    height: 200vh;
-    z-index: 2;
-    transform: rotate(30deg);
-  }
-  .echelon-text {
-    position: absolute;
-    top: 0;
-    mix-blend-mode: difference;
-    color: $white;
-    z-index: 3;
-    h1 {
-      font-size: 15vw;
-      font-weight: bold;
-      margin: 20px;
+    left: 0;
+    .white-box {
+      background: $white;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      position: absolute;
+      top: 0;
     }
-    .google-play-link {
-      img {
-        width: 400px;
-        height: auto;
+    .black-box {
+      background: $black;
+      width: 100vw;
+      height: 200vh;
+      z-index: 2;
+      transform: rotate(30deg);
+    }
+    .inverter-box {
+      position: absolute;
+      top: 0;
+      background-color: $heromode;
+      mix-blend-mode: screen;
+      width: 100%;
+      height: 100%;
+      z-index: 4;
+    }
+    .echelon-text {
+      mix-blend-mode: difference;
+      color: $white;
+      z-index: 3;
+      h1 {
+        font-size: 15vw;
+        font-weight: bold;
+        margin: 20px;
       }
     }
   }
-  .inverter-box {
+  .background-svg {
     position: absolute;
     top: 0;
-    background-color: $heromode;
-    mix-blend-mode: screen;
-    width: 100%;
-    height: 100%;
-    z-index: 4;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    rect {
+      width: 100%;
+      height: 100%;
+      &.inverter-rect {
+        mix-blend-mode: screen;
+      }
+    }
+    text {
+      mix-blend-mode: difference;
+    }
+  }
+  .google-play-link {
+    img {
+      width: 400px;
+      height: auto;
+    }
   }
 }
 @media screen and (max-width: 767px) {
