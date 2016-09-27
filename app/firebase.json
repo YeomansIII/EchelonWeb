@@ -1,9 +1,0 @@
-{
-  "firebase": "flickering-heat-6442",
-  "public": ".",
-  "ignore": [
-    "firebase.json",
-    "**/.*",
-    "**/node_modules/**"
-  ]
-}
