@@ -1,0 +1,244 @@
+html, body {
+  font-family: Roboto, sans-serif;
+  height: 100%;
+  background: #F4FAFA;
+  padding: 0;
+  margin: 0;
+}
+md-content, md-sidenav-layout {
+  height: 100vh;
+}
+md-toolbar {
+  background-color: #94BAC7 !important;
+}
+.main-sidenav {
+  background-color: white !important;
+  width: 250px;
+  color: darkslategray;
+  header {
+    padding: 20px;
+    background-color: #57387B;
+    color: white;
+    h4 {
+      margin: 5px 0 30px;
+    }
+    .profile {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      img {
+        margin-right: 10px;
+        width: 60px;
+        border-radius: 500px;
+      }
+    }
+    .settings-row {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      .api-select {
+        text-align: right;
+      }
+    }
+  }
+  .nav-button {
+    width: 100%;
+    border-radius: 0;
+    padding: 10px;
+    font-size: 1.2em;
+    text-align: left;
+    i {
+      vertical-align: text-bottom;
+      padding: 0 20px 0 10px;
+    }
+  }
+  .logout {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0;
+  }
+}
+button {
+  i, md-icon {
+    vertical-align: middle;
+  }
+  &.active {
+    background: #fff;
+    color: #009688;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+.fill {
+  flex: 1 1 auto;
+}
+.app-state {
+  margin: 15px;
+  flex: 1;
+}
+.home {
+  flex: 1;
+}
+md-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+md-card {
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+}
+div.md-card {
+  width: 100%;
+}
+table {
+  margin-top: 15px;
+  th {
+    text-align: left !important;
+  }
+}
+.table-card {
+  md-card-content {
+    margin: -24px;
+    margin-bottom: -24px !important;
+    datatable {
+      margin-top: -24px;
+    }
+  }
+  .md-card {
+    -webkit-transition: height 0.8s;
+    -moz-transition: height 0.8s;
+    transition: height 0.8s;
+  }
+  table {
+    border: none !important;
+  }
+  .crud-buttons {
+    button {
+      min-width: 0;
+    }
+  }
+  &.title {
+    md-card-content {
+      margin: 0 -24px -24px -24px !important;
+    }
+    datatable {
+      margin-top: 0;
+    }
+  }
+}
+md-icon {
+  &.md-warn {
+    color: red;
+  }
+}
+span {
+  i {
+    vertical-align: middle;
+  }
+}
+md-progress-circle.small, md-spinner.small {
+  width: 30px;
+  height: 30px;
+}
+/**
+ * Paging
+ */
+
+.mdl-paging {
+  color: rgba(0, 0, 0, 0.54);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 56px;
+  flex-direction: row;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+//.mdl-paging > * {
+//  -webkit-flex: none;
+//  -ms-flex: none;
+//  flex: none;
+//}
+
+.mdl-list + .mdl-paging {
+  margin: 0;
+}
+.mdl-paging__per-page {
+}
+.mdl-paging__per-page-label {
+}
+.mdl-paging__per-page-value {
+}
+.mdl-paging__per-page + .mdl-paging__count {
+}
+.mdl-paging .mdl-menu {
+}
+.mdl-paging__prev:last-child {
+}
+.mdl-paging__count + .mdl-paging__prev {
+}
+.mdl-paging__prev + .mdl-paging__next {
+}
+.mdl-paging__count + .mdl-paging__next {
+}
+//// End paging
+.detail-attributes-grid {
+  .mdl-cell {
+    img {
+      max-width: 100%;
+    }
+  }
+}
+.center-margin {
+  margin: auto;
+}
+.center-align {
+  text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  &.column {
+    flex-direction: column;
+  }
+}
+footer {
+  flex: 0 0 60px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}

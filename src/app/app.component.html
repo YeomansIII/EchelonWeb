@@ -1,3 +1,34 @@
-<h1>
-  {{title}}
-</h1>
+<div>
+  <md-sidenav-layout>
+    <md-sidenav #sidenav class="main-sidenav" (open)="sidenavButton.focus()" mode="over" layout-padding>
+      <header>
+        <h4>Echelon</h4>
+        <div class="profile">
+          <img [src]=""/>
+          <h6>Username</h6>
+        </div>
+        <div class="settings-row">
+          <div class="api-select">
+            <button md-button [md-menu-trigger-for]="menu">
+              <md-icon>keyboard_arrow_down</md-icon>
+            </button>
+            <md-menu #menu="mdMenu" x-position="after" y-position="below">
+              <button md-menu-item>Settings</button>
+            </md-menu>
+          </div>
+        </div>
+      </header>
+      <a md-button class="nav-button" *ngFor="let navButton of navButtons"
+         router-active [routerLink]="[navButton.location]"><i
+        class="material-icons">{{navButton.icon}}</i>{{navButton.text}}</a>
+      <button md-raised-button class="md-warn logout" (click)="logout()">Logout</button>
+    </md-sidenav>
+    <md-toolbar>
+      <button md-button #sidenavButton (click)="toggleNavDrawer()">
+        <md-icon>menu</md-icon>
+      </button>
+      <span>{{appBar.title}}</span>
+    </md-toolbar>
+    <router-outlet></router-outlet>
+  </md-sidenav-layout>
+</div>

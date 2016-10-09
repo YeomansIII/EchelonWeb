@@ -5,8 +5,10 @@ import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
 import {AngularFireModule} from "angularfire2";
-import {MaterialModule} from "@angular/material";
-import { LoginComponent } from './login/login.component';
+import {MaterialModule, OVERLAY_PROVIDERS, MdIconRegistry} from "@angular/material";
+import {LoginComponent} from './login/login.component';
+import {routing, appRoutingProviders} from "./app.routes";
+import {AuthGuard} from "./other/auth.gaurd";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCRfvrUhnL__JjTZcuyrv5SpdnxmfPRhaM",
@@ -26,9 +28,15 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     FormsModule,
     HttpModule,
-    MaterialModule
+    routing,
+    MaterialModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    appRoutingProviders,
+    OVERLAY_PROVIDERS,
+    MdIconRegistry
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
