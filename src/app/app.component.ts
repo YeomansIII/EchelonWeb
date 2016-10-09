@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, NgZone} from '@angular/core';
 import {Router} from "@angular/router";
 import {ViewChild} from "@angular/core/src/metadata/di";
 import {MdSidenav} from "@angular/material";
@@ -16,20 +16,40 @@ export class AppComponent {
   appBar = {
     title: 'AppBar'
   }
+  window = {
+    width: 0,
+    height: 0
+  }
   navButtons = [
     {
       icon: "home",
       text: "Home",
-      location: "./"
+      location: "/"
     },
     {
       icon: "group",
       text: "Group",
-      location: "./g"
+      location: "/g"
+    },
+    {
+      icon: "account",
+      text: "Account",
+      location: "/account"
     }
   ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private ngZone: NgZone) {
+    window.onresize = (e) => {
+      this.setWindowSize();
+    };
+    this.setWindowSize();
+  }
+
+  setWindowSize() {
+    this.ngZone.run(() => {
+      this.window.width = window.innerWidth;
+      this.window.height = window.innerHeight;
+    });
   }
 
   toggleNavDrawer() {

@@ -1,6 +1,8 @@
 <div>
   <md-sidenav-layout>
-    <md-sidenav #sidenav class="main-sidenav" (open)="sidenavButton.focus()" mode="over" layout-padding>
+    <md-sidenav #sidenav class="main-sidenav" (open)="sidenavButton.focus()" [opened]="window.width>768"
+                [mode]="window.width>768?'side':'over'"
+                layout-padding>
       <header>
         <h4>Echelon</h4>
         <div class="profile">
@@ -24,7 +26,7 @@
       <button md-raised-button class="md-warn logout" (click)="logout()">Logout</button>
     </md-sidenav>
     <md-toolbar>
-      <button md-button #sidenavButton (click)="toggleNavDrawer()">
+      <button md-button #sidenavButton [hidden]="window.width>768" (click)="toggleNavDrawer()">
         <md-icon>menu</md-icon>
       </button>
       <span>{{appBar.title}}</span>
