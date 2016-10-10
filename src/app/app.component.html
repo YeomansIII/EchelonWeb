@@ -1,9 +1,9 @@
 <div>
   <md-sidenav-layout>
-    <md-sidenav #sidenav class="main-sidenav" (open)="sidenavButton.focus()" [opened]="window.width>768"
+    <md-sidenav #sidenav class="main-sidenav" [opened]="(window.width>768)&&state.loggedIn"
                 [mode]="window.width>768?'side':'over'"
                 layout-padding>
-      <header>
+      <header color="accent">
         <h4>Echelon</h4>
         <div class="profile">
           <img [src]=""/>
@@ -21,15 +21,16 @@
         </div>
       </header>
       <a md-button class="nav-button" *ngFor="let navButton of navButtons"
-         router-active [routerLink]="[navButton.location]"><i
-        class="material-icons">{{navButton.icon}}</i>{{navButton.text}}</a>
+         router-active [routerLink]="[navButton.location]">
+        <md-icon>{{navButton.icon}}</md-icon>
+        {{navButton.text}}</a>
       <button md-raised-button class="md-warn logout" (click)="logout()">Logout</button>
     </md-sidenav>
-    <md-toolbar>
-      <button md-button #sidenavButton [hidden]="window.width>768" (click)="toggleNavDrawer()">
+    <md-toolbar color="primary" *ngIf="state.loggedIn">
+      <button md-button #sidenavButton *ngIf="window.width<=768" (click)="toggleNavDrawer()" class="icon">
         <md-icon>menu</md-icon>
       </button>
-      <span>{{appBar.title}}</span>
+      <span>{{toolbar.title}}</span>
     </md-toolbar>
     <router-outlet></router-outlet>
   </md-sidenav-layout>

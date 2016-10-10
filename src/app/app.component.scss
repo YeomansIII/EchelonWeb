@@ -1,3 +1,4 @@
+@import "../assets/themes/echelon-app-theme";
 html, body {
   font-family: Roboto, sans-serif;
   height: 100%;
@@ -8,16 +9,13 @@ html, body {
 md-content, md-sidenav-layout {
   height: 100vh;
 }
-md-toolbar {
-  background-color: #94BAC7 !important;
-}
 .main-sidenav {
   background-color: white !important;
   width: 250px;
   color: darkslategray;
   header {
     padding: 20px;
-    background-color: #57387B;
+    background-color: md-color($accent, 500);
     color: white;
     h4 {
       margin: 5px 0 30px;
@@ -72,7 +70,10 @@ md-toolbar {
     border-radius: 0;
   }
 }
-button {
+button.icon {
+  min-width: 0;
+}
+.md-button-wrapper {
   i, md-icon {
     vertical-align: middle;
   }
@@ -114,36 +115,6 @@ table {
   margin-top: 15px;
   th {
     text-align: left !important;
-  }
-}
-.table-card {
-  md-card-content {
-    margin: -24px;
-    margin-bottom: -24px !important;
-    datatable {
-      margin-top: -24px;
-    }
-  }
-  .md-card {
-    -webkit-transition: height 0.8s;
-    -moz-transition: height 0.8s;
-    transition: height 0.8s;
-  }
-  table {
-    border: none !important;
-  }
-  .crud-buttons {
-    button {
-      min-width: 0;
-    }
-  }
-  &.title {
-    md-card-content {
-      margin: 0 -24px -24px -24px !important;
-    }
-    datatable {
-      margin-top: 0;
-    }
   }
 }
 md-icon {
