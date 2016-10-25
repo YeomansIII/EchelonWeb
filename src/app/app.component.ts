@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
       scope: 'user-read-private user-read-email playlist-read-private playlist-read-collaborative',
       redirectUri: redirectUri,
       apiBase: 'https://api.spotify.com/v1'
-    }
+    };
     this.SpotifyService.setConfig(spotifyConfig);
   }
 
